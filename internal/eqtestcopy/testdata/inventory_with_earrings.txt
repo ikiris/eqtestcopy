@@ -1,0 +1,12 @@
+Location	Name	ID	Count	Slots
+Ear1	Silver Earring	12345	1	0
+Head	Iron Helm	23456	1	0
+Ear2	Gold Earring	34567	1	0
+Neck	Silver Necklace	45678	1	0
+Wrist1	Leather Bracer	56789	1	0
+Wrist2	Iron Bracer	67890	1	0
+Finger1	Silver Ring	78901	1	0
+Finger2	Gold Ring	89012	1	0
+General1	Bag	99999	1	10
+General1-Slot1	Health Potion	11111	5	0
+General1-Slot2	Mana Potion	22222	3	0

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  eqtestcopy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eqtestcopy
+    ports:
+      - "3000:3000"
+    environment:
+      # Database configuration
+      - DB_PASSWORD=${DB_PASSWORD:-quarm}
+      
+      # OIDC configuration
+      - OIDC_ISSUER=${OIDC_ISSUER:-https://localhost:8443}
+      - OAUTH2_CLIENT_ID=${OAUTH2_CLIENT_ID:-eqtestcopy-spa}
+    volumes:
+      # Mount TLS certificates (adjust paths as needed)
+      - ./certs:/app/certs:ro
+    command: [
+      "--db-username", "${DB_USERNAME:-quarm}",
+      "--db-host", "${DB_HOST:-xev.teraptra.net}",
+      "--db-port", "${DB_PORT:-3306}",
+      "--db-name", "${DB_NAME:-quarm}",
+      "--addr", "0.0.0.0",
+      "--port", "3000",
+      "--tls-cert", "/app/certs/xev-teraptra-cert.pem",
+      "--tls-key", "/app/certs/xev-teraptra-key.pem",
+      "--ca-cert", "/app/certs/teraptra-ca-cert.pem",
+      "--oidc-issuer", "${OIDC_ISSUER:-https://localhost:8443}",
+      "--oidc-client-id", "${OAUTH2_CLIENT_ID:-eqtestcopy-spa}"
+    ]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

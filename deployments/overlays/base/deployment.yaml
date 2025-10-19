@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eqtestcopy
+  labels:
+    app: eqtestcopy
+    component: oidc-provider
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eqtestcopy
+  template:
+    metadata:
+      labels:
+        app: eqtestcopy
+        component: test-copy
+    spec:
+      containers:
+      - name: eqtestcopy
+        image: ghcr.io/ikiris/eqtestcopy:latest
+        command: ["/eqtestcopy", "--tls=false"]
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+          name: https
+          protocol: TCP
+        env:
+        - name: OIDC_ISSUER
+          value: "https://xev.teraptra.net"
+        - name: OIDC_CLIENT_ID
+          value: "eqtestcopy-spa"
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: eqtestcopy-config
+              key: db-host
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: eqtestcopy-config
+              key: db-port
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: eqtestcopy-secrets
+              key: db-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: eqtestcopy-secrets
+              key: db-password
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: eqtestcopy-config
+              key: db-name
+        - name: CERT_FILE
+          value: "/certs/tls.crt"
+        - name: KEY_FILE
+          value: "/certs/tls.key"
+        volumeMounts:
+        - name: tls-certs
+          mountPath: /certs
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8443
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+      volumes:
+      - name: tls-certs
+        secret:
+          secretName: eqtestcopy-tls
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1000

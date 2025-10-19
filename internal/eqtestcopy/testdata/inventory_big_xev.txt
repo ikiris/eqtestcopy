@@ -1,0 +1,143 @@
+Location	Name	ID	Count	Slots
+Ear	Golden Black Sapphire Earring	14702	1	0
+Head	Blighted Skullcap	1232	1	0
+Face	Tobrin's Mystical Eyepatch	11052	1	0
+Ear	Golden Black Sapphire Earring	14702	1	0
+Neck	Black Sapphire Velium Necklace	30351	1	0
+Shoulders	Bloodsoaked Raiment	1279	1	0
+Arms	Spirit Wracked Cord	5723	1	0
+Back	White Dragonscale Cloak	11603	1	0
+Wrist	Bracelet of Cessation	12804	1	0
+Wrist	Bone Bracelet of Condemnation	25095	1	0
+Range	Dagger of Marnek	13169	1	0
+Hands	Shiny Metallic Gloves	31340	1	0
+Primary	Scythe of the Shadowed Soul	20544	1	0
+Secondary	Empty	0	0	0
+Fingers	Ring of Lightning	25198	1	0
+Fingers	Regal band of Bathezid	5727	1	0
+Chest	Sal`Varae's Robe of Darkness	31239	1	0
+Legs	Rotting Trousers	31166	1	0
+Feet	White Dragonscale Boots	29645	1	0
+Waist	Bone-Clasped Girdle	11666	1	0
+Ammo	Empty	0	0	0
+General1	Bag of the Tinkerers	17403	1	10
+General1-Slot1	Blighted Robe	1233	1	0
+General1-Slot2	Obulus Death Shroud	4315	1	0
+General1-Slot3	Di'zok Signet of Service	5728	1	0
+General1-Slot4	Blighted Gloves	1236	1	0
+General1-Slot5	Empty	0	0	0
+General1-Slot6	Empty	0	0	0
+General1-Slot7	Empty	0	0	0
+General1-Slot8	Empty	0	0	0
+General1-Slot9	Empty	0	0	0
+General1-Slot10	Empty	0	0	0
+General2	Bag of the Tinkerers	17403	1	10
+General2-Slot1	Empty	0	0	0
+General2-Slot2	Empty	0	0	0
+General2-Slot3	Empty	0	0	0
+General2-Slot4	Empty	0	0	0
+General2-Slot5	Empty	0	0	0
+General2-Slot6	Empty	0	0	0
+General2-Slot7	Empty	0	0	0
+General2-Slot8	Empty	0	0	0
+General2-Slot9	Empty	0	0	0
+General2-Slot10	Empty	0	0	0
+General3	Bag of the Tinkerers	17403	1	10
+General3-Slot1	Empty	0	0	0
+General3-Slot2	Empty	0	0	0
+General3-Slot3	Empty	0	0	0
+General3-Slot4	Empty	0	0	0
+General3-Slot5	Empty	0	0	0
+General3-Slot6	Empty	0	0	0
+General3-Slot7	Empty	0	0	0
+General3-Slot8	Empty	0	0	0
+General3-Slot9	Empty	0	0	0
+General3-Slot10	Empty	0	0	0
+General4	Bag of the Tinkerers	17403	1	10
+General4-Slot1	Empty	0	0	0
+General4-Slot2	Empty	0	0	0
+General4-Slot3	Empty	0	0	0
+General4-Slot4	Empty	0	0	0
+General4-Slot5	Empty	0	0	0
+General4-Slot6	Empty	0	0	0
+General4-Slot7	Empty	0	0	0
+General4-Slot8	Empty	0	0	0
+General4-Slot9	Empty	0	0	0
+General4-Slot10	Bone Chips	13073	20	0
+General5	Bag of the Tinkerers	17403	1	10
+General5-Slot1	Bread Cakes*	9991	20	0
+General5-Slot2	Skin of Milk	9990	20	0
+General5-Slot3	Empty	0	0	0
+General5-Slot4	Locket of Escape	14727	1	0
+General5-Slot5	Empty	0	0	0
+General5-Slot6	Empty	0	0	0
+General5-Slot7	Empty	0	0	0
+General5-Slot8	Empty	0	0	0
+General5-Slot9	Empty	0	0	0
+General5-Slot10	Peridot	10028	20	0
+General6	Fungus Covered Great Stick	10895	1	0
+General7	Journeyman's Boots	2300	1	0
+General8	Circlet of Shadow	14730	1	0
+General-Coin	Currency	0	500000	0
+Held	Empty	0	0	0
+Bank1	Empty	0	0	0
+Bank2	Empty	0	0	0
+Bank3	Empty	0	0	0
+Bank4	Empty	0	0	0
+Bank5	Empty	0	0	0
+Bank6	Empty	0	0	0
+Bank7	Empty	0	0	0
+Bank8	Empty	0	0	0
+Bank9	Empty	0	0	0
+Bank10	Empty	0	0	0
+Bank11	Empty	0	0	0
+Bank12	Empty	0	0	0
+Bank13	Empty	0	0	0
+Bank14	Empty	0	0	0
+Bank15	Empty	0	0	0
+Bank16	Empty	0	0	0
+Bank17	Empty	0	0	0
+Bank18	Empty	0	0	0
+Bank19	Empty	0	0	0
+Bank20	Empty	0	0	0
+Bank21	Empty	0	0	0
+Bank22	Empty	0	0	0
+Bank23	Empty	0	0	0
+Bank24	Empty	0	0	0
+Bank25	Empty	0	0	0
+Bank26	Empty	0	0	0
+Bank27	Empty	0	0	0
+Bank28	Empty	0	0	0
+Bank29	Empty	0	0	0
+Bank30	Empty	0	0	0
+SharedBank1	Empty	0	0	0
+SharedBank2	Empty	0	0	0
+SharedBank3	Empty	0	0	0
+SharedBank4	Empty	0	0	0
+SharedBank5	Empty	0	0	0
+SharedBank6	Empty	0	0	0
+SharedBank7	Empty	0	0	0
+SharedBank8	Empty	0	0	0
+SharedBank9	Empty	0	0	0
+SharedBank10	Empty	0	0	0
+SharedBank11	Empty	0	0	0
+SharedBank12	Empty	0	0	0
+SharedBank13	Empty	0	0	0
+SharedBank14	Empty	0	0	0
+SharedBank15	Empty	0	0	0
+SharedBank16	Empty	0	0	0
+SharedBank17	Empty	0	0	0
+SharedBank18	Empty	0	0	0
+SharedBank19	Empty	0	0	0
+SharedBank20	Empty	0	0	0
+SharedBank21	Empty	0	0	0
+SharedBank22	Empty	0	0	0
+SharedBank23	Empty	0	0	0
+SharedBank24	Empty	0	0	0
+SharedBank25	Empty	0	0	0
+SharedBank26	Empty	0	0	0
+SharedBank27	Empty	0	0	0
+SharedBank28	Empty	0	0	0
+SharedBank29	Empty	0	0	0
+SharedBank30	Empty	0	0	0
+Bank-Coin	Currency	0	0	0

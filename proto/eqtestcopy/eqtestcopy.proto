@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package eqtestcopy;
+option go_package="github.com/ikiris/eqtestcopy/proto/eqtestcopy";
+
+service EqTestCopyService {
+  // Character Management (all require OAuth2 token in metadata)
+  rpc GetCharacter(GetCharacterRequest) returns (CharacterData);
+  rpc ListCharacters(ListCharactersRequest) returns (ListCharactersResponse);
+  rpc ParseInventoryFile(ParseInventoryFileRequest) returns (ParseInventoryFileResponse);
+  rpc UpdateInventory(UpdateInventoryRequest) returns (UpdateInventoryResponse);
+  rpc GetItemNames(GetItemNamesRequest) returns (GetItemNamesResponse);
+}
+
+message CharacterData {
+  int32 id = 1;
+  string name = 2;
+  int32 race = 3;
+  int32 class = 4;
+  int32 level = 5;
+  int32 zone_id = 6;
+  float x = 7;
+  float y = 8;
+  float z = 9;
+  Stat stats = 10;
+  repeated InventoryItem inventories = 11;
+}
+
+message Stat {
+  int32 hp = 1;
+  int32 mana = 2;
+  int32 str = 3;
+  int32 sta = 4;
+  int32 agi = 5;
+  int32 dex = 6;
+  int32 wis = 7;
+  int32 intel = 8;
+  int32 cha = 9;
+}
+
+message InventoryItem {
+  int32 slot_id = 1;
+  int32 item_id = 2;
+  int32 charges = 3;
+  string location = 4;  // Raw location string from TAKP format (e.g., "General1-Slot2")
+  string slot_name = 5; // Friendly slot name for display (e.g., "Head", "General Bag 1 Slot 2")
+}
+
+message GetCharacterRequest {
+  int32 character_id = 1;
+}
+
+message ListCharactersRequest {
+    
+}
+
+message ListCharactersResponse {
+  repeated CharacterData characters = 1;
+}
+
+message UpdateInventoryRequest {
+  int32 character_id = 1;
+  repeated InventoryItem inventories = 2;
+}
+
+message UpdateInventoryResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetItemNamesRequest {
+  repeated int32 item_ids = 1;
+}
+
+message GetItemNamesResponse {
+  map<int32, string> item_names = 1;
+}
+
+message ParseInventoryFileRequest {
+  string file_content = 1;  // Raw TAKP inventory file content
+}
+
+message ParseInventoryFileResponse {
+  bool success = 1;
+  string message = 2;
+  repeated InventoryItem items = 3;  // Parsed items with correct slot IDs
+  repeated string errors = 4;        // Parsing errors
+  repeated string warnings = 5;      // Parsing warnings
+  map<int32, string> item_names = 6; // Item names for display
+}

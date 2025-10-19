@@ -1,0 +1,7 @@
+Location	Name	ID	Count	Slots
+Ear	First Earring	11111	1	0
+Ear	Second Earring	22222	1	0
+Wrist	First Bracer	33333	1	0
+Wrist	Second Bracer	44444	1	0
+Fingers	First Ring	55555	1	0
+Fingers	Second Ring	66666	1	0

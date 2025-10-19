@@ -1,0 +1,15 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: eqtestcopy
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: (PathPrefix(`/import`)
+      kind: Rule
+      services:
+        - name: eqtestcopy
+          port: 3000
+          scheme: http

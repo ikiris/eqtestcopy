@@ -1,73 +1,61 @@
 # Git
 .git
 .gitignore
-.gitattributes
 
 # Documentation
 README.md
 CHANGELOG.md
 CLIENT_VALIDATION.md
 RELEASE.md
+DOCKER.md
 *.md
 
-# Build artifacts
-dist/
-build/
-*.exe
-*.dll
-*.so
-*.dylib
+# CI/CD
+.github/
+deployments/
 
-# Test files
-*_test.go
-testdata/
+# Frontend development files
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# Go
 *.test
+*.prof
+coverage.txt
+coverage.html
 
-# IDE files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
 # Logs
 *.log
-logs/
 
 # Environment files
 .env
 .env.local
-.env.*.local
+.env.production
+env.template
 
-# Node modules (will be installed during build)
-frontend/node_modules/
-node_modules/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Coverage reports
-coverage/
-*.out
-
-# Release files
-.github/
-.release-please-manifest.json
-
-# Local development files
-docker-compose.yml
-docker-compose.*.yml
+# Docker
+Dockerfile*
+docker-compose*.yml
 .dockerignore
 
-# Certificate files (should be provided via volumes)
-*.pem
-*.crt
-*.key
-*.p12
-*.pfx
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Temporary files
+*.tmp
+*.temp

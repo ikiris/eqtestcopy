@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - ../base
   - secret.enc.yaml
-  - git-credentials.yaml
   - ingress.yaml

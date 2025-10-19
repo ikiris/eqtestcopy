@@ -38,7 +38,8 @@ COPY cmd/ ./cmd/
 COPY internal/ ./internal/
 COPY proto/ ./proto/
 
-# Copy built frontend from previous stage
+# Copy frontend Go source and built assets for embedding
+COPY frontend/build.go ./frontend/build.go
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
 # Build the Go application

@@ -19,7 +19,7 @@ spec:
       containers:
       - name: eqtestcopy
         image: ghcr.io/ikiris/eqtestcopy:latest
-        command: ["/eqtestcopy", "--tls=false"]
+        command: ["./eqtestcopy", "--tls=false"]
         resources:
           requests:
             memory: "128Mi"

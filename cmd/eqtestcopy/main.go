@@ -43,9 +43,9 @@ func doStuff(ctx context.Context) error {
 	useTLS := flag.Bool("tls", true, "Use TLS")
 
 	// TLS configuration flags
-	tlsCertFile := flag.String("tls-cert", "xev-teraptra-cert.pem", "TLS certificate file path")
-	tlsKeyFile := flag.String("tls-key", "xev-teraptra-key.pem", "TLS private key file path")
-	tlsCAFile := flag.String("ca-cert", "teraptra-ca-cert.pem", "TLS private key file path")
+	tlsCertFile := flag.String("tls-cert", getEnv("CERT_FILE", "xev-teraptra-cert.pem"), "TLS certificate file path")
+	tlsKeyFile := flag.String("tls-key", getEnv("KEY_FILE", "xev-teraptra-key.pem"), "TLS private key file path")
+	tlsCAFile := flag.String("ca-cert", getEnv("CA_FILE", "teraptra-ca-cert.pem"), "TLS private key file path")
 
 	// OIDC configuration flags
 	oidcIssuer := flag.String("oidc-issuer", getEnv("OIDC_ISSUER", "https://localhost:8443"), "OIDC issuer URL")

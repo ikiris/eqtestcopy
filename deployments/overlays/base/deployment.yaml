@@ -65,6 +65,8 @@ spec:
           value: "/certs/tls.crt"
         - name: KEY_FILE
           value: "/certs/tls.key"
+        - name: CA_FILE
+          value: "/certs/ca.crt"
         volumeMounts:
         - name: tls-certs
           mountPath: /certs
@@ -72,7 +74,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /readyz
-            port: 8443
+            port: 3000
           initialDelaySeconds: 5
           periodSeconds: 5
           timeoutSeconds: 3

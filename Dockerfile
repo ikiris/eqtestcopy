@@ -1,9 +1,6 @@
 # Stage 1: Build frontend
 FROM node:20-alpine AS frontend-builder
 
-ENV GOOS=linux
-ENV GOARCH=amd64
-
 # Set working directory
 WORKDIR /app/frontend
 
@@ -22,10 +19,6 @@ RUN npm run build
 
 # Stage 2: Build Go application
 FROM golang:1.25-alpine AS go-builder
-
-ENV CGO_ENABLED=0
-ENV GOOS=linux
-ENV GOARCH=amd64
 
 # Install build dependencies
 RUN apk add --no-cache git ca-certificates tzdata
@@ -50,7 +43,8 @@ COPY frontend/build.go ./frontend/build.go
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
 # Build the Go application
-RUN go build ./cmd/eqtestcopy
+RUN CGO_ENABLED=0 go build \
+    ./cmd/eqtestcopy
 
 # Final stage: Runtime
 FROM alpine:3.19

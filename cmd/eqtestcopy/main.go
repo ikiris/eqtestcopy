@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"database/sql"
+	"encoding/pem"
 	"flag"
 	"fmt"
 	"log/slog"
@@ -87,9 +88,18 @@ func doStuff(ctx context.Context) error {
 		caPool = x509.NewCertPool()
 	}
 
-	if !caPool.AppendCertsFromPEM(caData) {
-		return fmt.Errorf("failed to parse CA certificate from %s", *tlsCAFile)
+	// Parse PEM-encoded certificate
+	block, _ := pem.Decode(caData)
+	if block == nil {
+		return fmt.Errorf("failed to decode PEM block from %s", *tlsCAFile)
 	}
+
+	cacert, err := x509.ParseCertificate(block.Bytes)
+	if err != nil {
+		return fmt.Errorf("failed to parse CA certificate from %s: %w", *tlsCAFile, err)
+	}
+
+	caPool.AddCert(cacert)
 
 	// Create custom HTTP client with CA
 	httpClient := &http.Client{
@@ -213,7 +223,17 @@ func setupTLSConfig(caFile, certFile, keyFile string) (*tls.Config, error) {
 		return nil, fmt.Errorf("failed to get system cert pool: %w", err)
 	}
 
-	caPool.AppendCertsFromPEM(ca)
+	block, _ := pem.Decode(ca)
+	if block == nil {
+		return nil, fmt.Errorf("failed to decode PEM block from %s", caFile)
+	}
+
+	cacert, err := x509.ParseCertificate(block.Bytes)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse CA certificate from %s: %w", caFile, err)
+	}
+
+	caPool.AddCert(cacert)
 
 	return &tls.Config{
 		Certificates: []tls.Certificate{cert},

@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`eqtestcopy.teraptra.net`)
+    - match: Host(`xevcopy.teraptra.net`)
       kind: Rule
       services:
         - name: eqtestcopy

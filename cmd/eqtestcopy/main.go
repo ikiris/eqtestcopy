@@ -143,8 +143,16 @@ func doStuff(ctx context.Context) error {
 	mux.Handle("/assets/", frontendHandler)
 	mux.Handle("/static/", frontendHandler)
 
+	// Create frontend config
+	frontendConfig := frontend.Config{
+		OIDCIssuer: *oidcIssuer,
+		ClientID:   *oidcClientID,
+	}
+
 	// For SPA routes, serve index.html to let React Router handle routing
-	mux.HandleFunc("/", frontend.Serve)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		frontend.ServeWithConfig(w, r, frontendConfig)
+	})
 
 	// Add logging middleware
 	loggedMux := loggingMiddleware(mux)

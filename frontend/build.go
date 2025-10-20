@@ -4,6 +4,7 @@ import (
 	"embed"
 	"log/slog"
 	"net/http"
+	"strings"
 )
 
 //go:embed dist/*
@@ -28,6 +29,12 @@ func GetHandler() http.Handler {
 	})
 }
 
+// Config holds the frontend configuration
+type Config struct {
+	OIDCIssuer string
+	ClientID   string
+}
+
 // Serve serves the frontend with SPA routing support for embedded assets
 func Serve(w http.ResponseWriter, r *http.Request) {
 	// Try to serve the requested file from embedded assets
@@ -45,6 +52,46 @@ func Serve(w http.ResponseWriter, r *http.Request) {
 	if data, err := Assets.ReadFile("dist/index.html"); err == nil {
 		w.Header().Set("Content-Type", "text/html")
 		if _, err := w.Write(data); err != nil {
+			slog.Error("Failed to write data", "error", err)
+		}
+		return
+	}
+
+	// Fallback to 404
+	http.NotFound(w, r)
+}
+
+// ServeWithConfig serves the frontend with injected configuration
+func ServeWithConfig(w http.ResponseWriter, r *http.Request, config Config) {
+	// Try to serve the requested file from embedded assets
+	filePath := "dist" + r.URL.Path
+	if data, err := Assets.ReadFile(filePath); err == nil {
+		// Set appropriate content type based on file extension
+		setContentType(w, r.URL.Path)
+		if _, err := w.Write(data); err != nil {
+			slog.Error("Failed to write data", "error", err)
+		}
+		return
+	}
+
+	// If file doesn't exist, serve index.html for SPA routing with injected config
+	if data, err := Assets.ReadFile("dist/index.html"); err == nil {
+		// Inject configuration into the HTML
+		html := string(data)
+
+		// Create a script tag with the configuration
+		configScript := `<script>
+window.__APP_CONFIG__ = {
+  oidcIssuer: '` + config.OIDCIssuer + `',
+  clientId: '` + config.ClientID + `'
+};
+</script>`
+
+		// Inject the script before the closing </head> tag
+		html = strings.Replace(html, "</head>", configScript+"</head>", 1)
+
+		w.Header().Set("Content-Type", "text/html")
+		if _, err := w.Write([]byte(html)); err != nil {
 			slog.Error("Failed to write data", "error", err)
 		}
 		return

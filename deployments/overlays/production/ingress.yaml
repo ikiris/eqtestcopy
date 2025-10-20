@@ -5,7 +5,7 @@ metadata:
   name: eqtestcopy
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: (PathPrefix(`/import`)
       kind: Rule

@@ -9,3 +9,6 @@ resources:
   - service.yaml
   - configmap.yaml
 
+images:
+  - name: ghcr.io/ikiris/eqtestcopy
+    newTag: 0.1.6
